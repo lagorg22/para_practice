@@ -4,4 +4,5 @@ project(para_practice C)
 set(CMAKE_C_STANDARD 11)
 
 add_executable(para_practice
-    stack_.c)
+    stack_.c
+        queue_.c)

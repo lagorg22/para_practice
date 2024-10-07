@@ -40,6 +40,10 @@ void stack_pop(Stack* s, void* target_ptr) {
     memcpy(target_ptr, top_elem, s->elem_size);
 }
 
+int stack_size(Stack* s) {
+    return s->log_len;
+}
+
 int main() {
     Stack s;
     stack_init(&s, sizeof(int));
@@ -48,7 +52,9 @@ int main() {
     }
     int res;
     for(int i = 0; i < 11; i++) {
+        int size = stack_size(&s);
         stack_pop(&s, &res);
+        printf("%d \n stack size: ", size);
         printf("%d \n", res);
     }
     stack_dispose(&s);
