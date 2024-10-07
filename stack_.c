@@ -33,11 +33,11 @@ void stack_push(Stack* s, void* val) {
     s->log_len++;
 }
 
-void stack_pop(Stack* s, void* target_ptr) {
+void stack_pop(Stack* s, void* dst_ptr) {
     assert(s->log_len > 0);
     s->log_len--;
     void* top_elem = (char*)s->elems + s->log_len * s->elem_size;
-    memcpy(target_ptr, top_elem, s->elem_size);
+    memcpy(dst_ptr, top_elem, s->elem_size);
 }
 
 int stack_size(Stack* s) {
@@ -54,8 +54,7 @@ int main() {
     for(int i = 0; i < 11; i++) {
         int size = stack_size(&s);
         stack_pop(&s, &res);
-        printf("%d \n stack size: ", size);
-        printf("%d \n", res);
+        printf("size: %d  ____  elem: %d\n", size, res);
     }
     stack_dispose(&s);
 
